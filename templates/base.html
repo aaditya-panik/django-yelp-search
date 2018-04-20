@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django Yelp Me</title>
+    {% block styles %}{% endblock styles %}
+    <link rel="stylesheet" href="{% static "/bootstrap/dist/css/bootstrap.css" %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static "/jquery-ui/themes//jquery-ui.min.css" %}" type="text/css"/>
+    <script src="{% static "/jquery/dist/jquery.min.js" %}" type="application/javascript"></script>
+    <script src="{% static "/jquery-ui/jquery-ui.min.js" %}" type="application/javascript"></script>
+    {% block scripts %}{% endblock scripts %}
+</head>
+<body>
+    {%  block content %}{% endblock content %}
+</body>
+</html>

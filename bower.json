@@ -1,0 +1,24 @@
+{
+  "name": "django_yelp",
+  "authors": [
+    "Aaditya Panikath <aadityarajeev@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/static/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "bootstrap": "^4.1.0",
+    "jquery-ui": "^1.12.1"
+  }
+}

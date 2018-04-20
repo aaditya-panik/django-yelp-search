@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <style>
+        .ui-autocomplete {
+            position: absolute;
+            z-index: 1000;
+            cursor: default;
+            padding: 0;
+            margin-top: 2px;
+            list-style: none;
+            background-color: #ffffff;
+            border: 1px solid #ccc
+            -webkit-border-radius: 5px;
+               -moz-border-radius: 5px;
+                    border-radius: 5px;
+            -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+               -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .ui-autocomplete > li {
+            padding: 3px 20px;
+        }
+
+        .ui-autocomplete > li.ui-state-active {
+          background-color: #dddddd;
+        }
+
+        .ui-helper-hidden-accessible {
+          display: none;
+        }
+
+        .top-padding {
+            padding-top: 2%;
+        }
+    </style>
+{% endblock styles %}
+
+{% block scripts %}
+    <script>
+        $(function() {
+                $("#id_cuisine").autocomplete({
+                    source: "api/cuisine_autocomplete/",
+                    minLength: 2,
+                });
+        });
+    </script>
+{% endblock scripts %}
+
+{% block content %}
+    {% load dict_tags %}
+    <div class="container top-padding">
+        <form action="" method="get">
+                <div class="form-group">
+                    {{ form }}
+                </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    {% if businesses %}
+        <div class="container table-responsive top-padding">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for business in businesses %}
+                    <tr>
+                        <td><img width=200px height=200px src="{{ business|get_item:"image_url" }}" class="img-thumbnail"></td>
+                        <td>{{ business|get_item:"name" }}</td>
+                        <td>{{ business|get_item:"location" }}</td>
+                        <td>{{ business|get_item:"phone" }}</td>
+                        <td>{{ business|get_item:"price" }}</td>
+                        <td>{{ business|get_item:"rating" }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+
+{% endblock content %}
